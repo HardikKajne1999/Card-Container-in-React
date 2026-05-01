@@ -1,6 +1,16 @@
 import '../index.css'
+import {useState} from 'react';
 
 export default function Card({img,company,jobTitle,tag1,tag2,timeOfPost,amount,location}){
+
+    let [isSaved,setIsSaved] = useState(false);
+
+    let btnClick = () => {
+        setIsSaved(!isSaved);
+        
+    }
+
+
     return (
         <>
         <div className="card">
@@ -8,8 +18,17 @@ export default function Card({img,company,jobTitle,tag1,tag2,timeOfPost,amount,l
                 <div className="img-container">
                     <img src={img} alt="" />
                 </div>
-                <div className="saveBtn">
-                    Save<i className="fa-regular fa-bookmark"></i>
+                <div className="saveBtn" onClick={btnClick}>
+                    {
+                        isSaved ? 
+                        <>
+                        Saved <i className="fa-solid fa-bookmark"></i> 
+                        </>
+                        : 
+                        <>
+                        Save <i className="fa-regular fa-bookmark"></i>
+                        </>
+                    } 
                 </div>
             </div>
             <div className="middle">
